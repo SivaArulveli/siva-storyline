@@ -1,4 +1,5 @@
 import TimelineEvent from "./TimelineEvent";
+import LeafDivider from "./LeafDivider";
 import { motion } from "framer-motion";
 
 const timelineData = [
@@ -135,16 +136,21 @@ const Timeline = () => {
         <div className="absolute left-[2.25rem] top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/30 to-primary/50 md:hidden" />
         
         {timelineData.map((event, index) => (
-          <TimelineEvent
-            key={index}
-            date={event.date}
-            title={event.title}
-            description={event.description}
-            link={event.link}
-            isLeft={index % 2 === 0}
-            index={index}
-            isMajor={event.isMajor}
-          />
+          <div key={index}>
+            <TimelineEvent
+              date={event.date}
+              title={event.title}
+              description={event.description}
+              link={event.link}
+              isLeft={index % 2 === 0}
+              index={index}
+              isMajor={event.isMajor}
+            />
+            {/* Add leaf divider after every 3rd event, but not after the last */}
+            {(index + 1) % 3 === 0 && index < timelineData.length - 1 && (
+              <LeafDivider index={index} />
+            )}
+          </div>
         ))}
       </div>
     </section>
