@@ -3,87 +3,101 @@ import { motion } from "framer-motion";
 
 const timelineData = [
   {
-    year: "2006",
+    date: "May 29, 2006",
     title: "Sri Siva's 80th Birthday",
     description: "A blessed celebration marking eight decades of divine presence and spiritual guidance. The auspicious beginning of this sacred chronicle.",
+    link: "https://sivapithan.com/80th-birthday",
     isMajor: true,
   },
   {
-    year: "2006",
+    date: "September 15, 2006",
     title: "Siva Gnana Malar",
     description: "Publication of the first sacred book, 'Siva Gnana Malar', preserving the divine teachings and wisdom for future generations.",
+    link: "https://sivapithan.com/siva-gnana-malar",
     isMajor: false,
   },
   {
-    year: "2008",
+    date: "February 7, 2008",
     title: "Maha Jeeva Samadhi",
-    description: "On the sacred morning of February 7th at 4:50 AM, Sri Siva Swamigal attained Maha Jeeva Samadhi, transcending the physical realm while remaining eternally present in spirit.",
+    description: "On the sacred morning at 4:50 AM, Sri Siva Swamigal attained Maha Jeeva Samadhi, transcending the physical realm while remaining eternally present in spirit.",
+    link: "https://sivapithan.com/maha-jeeva-samadhi",
     isMajor: true,
   },
   {
-    year: "2009",
+    date: "February 7, 2009",
     title: "2nd Gurupooja",
     description: "The second annual observance honoring the divine master, gathering devotees in sacred remembrance and gratitude.",
+    link: "https://sivapithan.com/2nd-gurupooja",
     isMajor: false,
   },
   {
-    year: "2009",
+    date: "March 21, 2009",
     title: "Kumbhabishegam",
     description: "The sacred temple consecration ceremony, invoking divine blessings and sanctifying the holy space.",
+    link: "https://sivapithan.com/kumbhabishegam",
     isMajor: true,
   },
   {
-    year: "2011",
+    date: "February 7, 2011",
     title: "3rd Gurupooja",
     description: "Continued devotion through the third annual commemoration, strengthening the spiritual bond with the master's eternal presence.",
+    link: "https://sivapithan.com/3rd-gurupooja",
     isMajor: false,
   },
   {
-    year: "2012",
+    date: "February 7, 2012",
     title: "4th Gurupooja",
     description: "Growing community of devotees gathering for the fourth annual sacred observance.",
+    link: "https://sivapithan.com/4th-gurupooja",
     isMajor: false,
   },
   {
-    year: "2013",
+    date: "February 7, 2013",
     title: "5th Gurupooja",
     description: "Half a decade of unbroken tradition, celebrating the fifth anniversary of remembrance.",
+    link: "https://sivapithan.com/5th-gurupooja",
     isMajor: false,
   },
   {
-    year: "2014",
+    date: "February 7, 2014",
     title: "6th Gurupooja",
     description: "The sacred flame of devotion continues to burn bright through the sixth annual commemoration.",
+    link: "https://sivapithan.com/6th-gurupooja",
     isMajor: false,
   },
   {
-    year: "2015",
+    date: "February 7, 2015",
     title: "7th Gurupooja",
     description: "Seven years of continuous reverence and spiritual practice in honor of the divine master.",
+    link: "https://sivapithan.com/7th-gurupooja",
     isMajor: false,
   },
   {
-    year: "2016",
+    date: "February 7, 2016",
     title: "8th Gurupooja",
     description: "A significant milestone marking eight years of devoted observance and growing spiritual community.",
+    link: "https://sivapithan.com/8th-gurupooja",
     isMajor: false,
   },
   {
-    year: "2017",
+    date: "February 7, 2017",
     title: "9th Gurupooja",
     description: "The ninth annual celebration, drawing devotees closer to the eternal teachings.",
+    link: "https://sivapithan.com/9th-gurupooja",
     isMajor: false,
   },
   {
-    year: "2018",
+    date: "February 7, 2018",
     title: "10th Gurupooja",
     description: "A decade of devotion — the tenth Gurupooja marks ten years since the Maha Jeeva Samadhi, celebrating an enduring spiritual legacy.",
+    link: "https://sivapithan.com/10th-gurupooja",
     isMajor: true,
   },
   {
-    year: "2019",
+    date: "February 7, 2019",
     title: "11th Gurupooja",
     description: "Continuing the sacred tradition into a new decade, with prayers and ceremonies honoring the immortal spirit of Sri Siva Swamigal.",
+    link: "https://sivapithan.com/11th-gurupooja",
     isMajor: false,
   },
 ];
@@ -123,9 +137,10 @@ const Timeline = () => {
         {timelineData.map((event, index) => (
           <TimelineEvent
             key={index}
-            year={event.year}
+            date={event.date}
             title={event.title}
             description={event.description}
+            link={event.link}
             isLeft={index % 2 === 0}
             index={index}
             isMajor={event.isMajor}
