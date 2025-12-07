@@ -8,6 +8,7 @@ const timelineData = [
     title: "Sri Siva's 80th Birthday",
     description: "A blessed celebration marking eight decades of divine presence and spiritual guidance. The auspicious beginning of this sacred chronicle.",
     link: "",
+    mediaType: "none" as const,
     isMajor: true,
   },
   {
@@ -15,6 +16,7 @@ const timelineData = [
     title: "Siva Gnana Malar",
     description: "Publication of the first sacred book, 'Siva Gnana Malar', preserving the divine teachings and wisdom for future generations.",
     link: "",
+    mediaType: "none" as const,
     isMajor: false,
   },
   {
@@ -22,6 +24,7 @@ const timelineData = [
     title: "Maha Jeeva Samadhi",
     description: "On the sacred morning, Sri Siva Swamigal attained Maha Jeeva Samadhi, transcending the physical realm while remaining eternally present in spirit.",
     link: "",
+    mediaType: "none" as const,
     isMajor: true,
   },
   {
@@ -29,6 +32,7 @@ const timelineData = [
     title: "Siva Swamigal Jeeva Samadhi",
     description: "Siva Maha Jeeva Samadhi Day — a day of sacred remembrance and spiritual significance.",
     link: "https://photos.google.com/share/AF1QipMtEufm6jYSQfPBKGmuMuXAj9f_1QDTQ-WVmtSJROeOyF_NGjw4ayPdOvhtLz_TdQ?key=R1pDdkJuYlBkSjMwNmZSM1dwYXBxTm9tdXZnZFZB",
+    mediaType: "photos" as const,
     isMajor: true,
   },
   {
@@ -36,6 +40,7 @@ const timelineData = [
     title: "1st Gurupooja",
     description: "The first annual observance honoring the divine master, gathering devotees in sacred remembrance and gratitude.",
     link: "https://photos.google.com/share/AF1QipOxoqAbKXriavRxRSpZydBiagvyeU2ztGMnNsr-GOLkjoBnFwiY35-XENimSTPrBw?key=X01aMThLOHRuX252SHp3V1hqeHdUQ2RtX2N2QmV3",
+    mediaType: "photos" as const,
     isMajor: false,
   },
   {
@@ -43,6 +48,7 @@ const timelineData = [
     title: "Jeeva Samadhi Mandabam Kumbhabishegam",
     description: "The sacred temple consecration ceremony of the Jeeva Samadhi Mandabam, invoking divine blessings and sanctifying the holy space.",
     link: "https://photos.app.goo.gl/7rRroxV9ZzCA5anU6",
+    mediaType: "photos" as const,
     isMajor: true,
   },
   {
@@ -50,6 +56,8 @@ const timelineData = [
     title: "2nd Gurupooja",
     description: "The second annual commemoration, strengthening the spiritual bond with the master's eternal presence.",
     link: "https://drive.google.com/file/d/1XCsaaHSBncH--yhHsWbByD85oPMC_DgY/view?usp=sharing",
+    mediaType: "youtube" as const,
+    mediaUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     isMajor: false,
   },
   {
@@ -57,6 +65,7 @@ const timelineData = [
     title: "Sri Surandai Brahmanayagam Swamigal Jeeva Samadhi",
     description: "Sri Surandai Brahmanayagam Swamigal attained Jeeva Samadhi, joining the eternal divine presence.",
     link: "https://sivapithan.wordpress.com/gallery/",
+    mediaType: "none" as const,
     isMajor: true,
   },
   {
@@ -64,6 +73,7 @@ const timelineData = [
     title: "3rd Gurupooja",
     description: "Continued devotion through the third annual commemoration, strengthening the spiritual bond with the master's eternal presence.",
     link: "https://photos.google.com/share/AF1QipONAXZ50KAkL0GS3cbr2hfGUvHc-LNYAkWYolsBtGnROMWGW9TqmKZmbj891rHNrA?key=bEUzYkpPVnhXSE5QQkczU2RjTzVhN2hBVC1PdUtB",
+    mediaType: "photos" as const,
     isMajor: false,
   },
   {
@@ -71,6 +81,7 @@ const timelineData = [
     title: "4th Gurupooja",
     description: "Growing community of devotees gathering for the fourth annual sacred observance.",
     link: "https://photos.google.com/share/AF1QipM19ozQX8964snuXX-m4FcFftR6TpS3Bey6kiOzHlzglq7xp_s6eYbcvyoo8odavg?key=a0pTZndKVTg3TDNlUkhlSEprMmV2bzJaNGIwemJB",
+    mediaType: "photos" as const,
     isMajor: false,
   },
   {
@@ -78,6 +89,7 @@ const timelineData = [
     title: "5th Gurupooja",
     description: "Half a decade of unbroken tradition, celebrating the fifth anniversary of remembrance.",
     link: "https://photos.google.com/share/AF1QipN_hLNkUpaKCO9xLSZdtSaADswF1LWVoeuGQig9mCb4Cbl5TWSedKN_Ihhp3m6cgw?key=T0JrSURrdkVqeXprM2ZmNENvZUh5RkZvbTkyUzRR",
+    mediaType: "photos" as const,
     isMajor: false,
   },
   {
@@ -85,6 +97,7 @@ const timelineData = [
     title: "6th Gurupooja",
     description: "The sacred flame of devotion continues to burn bright through the sixth annual commemoration.",
     link: "https://photos.google.com/share/AF1QipPkeoRJUv_Bkx9wtCexsfYfPmTU8EP_tTJ4KXalFduIXjhz6uV9r1-rEm-D7inNyw?key=MGQ2WHlCQ3VzUE8xVEh1QV9namExMjBHWEdFNVRR",
+    mediaType: "photos" as const,
     isMajor: false,
   },
   {
@@ -92,6 +105,7 @@ const timelineData = [
     title: "7th Gurupooja",
     description: "Seven years of continuous reverence and spiritual practice in honor of the divine master.",
     link: "https://photos.google.com/share/AF1QipPBGsD4GltQillGMp9BgWS_OLe4DxZcTlno3gd07RCjedxUOyXUDqKszW7naFfZIQ?key=TmZFZlp3N243YnktN2hoNzhlRkZiRzBGS1k3NTNR",
+    mediaType: "photos" as const,
     isMajor: false,
   },
   {
@@ -99,6 +113,7 @@ const timelineData = [
     title: "8th Gurupooja",
     description: "A significant milestone marking eight years of devoted observance and growing spiritual community.",
     link: "https://photos.google.com/share/AF1QipOYVVXkmsTy0w9nr3xoeDCe4P59QNePCC_YtyhKf4cJk4hDStMU8rixIgsxYWOs5w?key=c0FVTDlrMkpZSXIyT0xhRjl3al9RWkt1eUpMNE5n",
+    mediaType: "photos" as const,
     isMajor: false,
   },
   {
@@ -106,6 +121,7 @@ const timelineData = [
     title: "9th Gurupooja",
     description: "The ninth annual celebration, drawing devotees closer to the eternal teachings.",
     link: "https://photos.google.com/share/AF1QipN2bBltPM7uUgGCGUL03UBDqjZq2FYMUeSw3ewaC0D_X0WbU0l94FDtHSXb-Zgiyw?key=ajhnLXhWcm4tX1E3TzR4eTNLZFpGWElkY0p4MkdB",
+    mediaType: "photos" as const,
     isMajor: false,
   },
   {
@@ -113,6 +129,7 @@ const timelineData = [
     title: "10th Gurupooja",
     description: "A decade of devotion — the tenth Gurupooja marks ten years since the Maha Jeeva Samadhi, celebrating an enduring spiritual legacy.",
     link: "https://photos.google.com/share/AF1QipO--wrPr8_q2b_7m9CmZdHyhpDWD0bwC90Mt4v-RVpWtn2znw2TfQoLD2GU2z06fQ?key=WFNNWnk1RW9qTVVyalN2UXdBaVE4VWhaX0V1Qml3",
+    mediaType: "photos" as const,
     isMajor: true,
   },
   {
@@ -120,6 +137,7 @@ const timelineData = [
     title: "11th Gurupooja",
     description: "Continuing the sacred tradition into a new decade, with prayers and ceremonies honoring the immortal spirit of Sri Siva Swamigal.",
     link: "https://photos.google.com/share/AF1QipPRlVf0shFOWgeF1ZMeJvOpg71PCerOqvSB-ZzT8ZWsm6nqpDsKKrSwCszOydB6ww?key=Y21QX0NsQ281VWwxRjVGR2JBWHZDLTFRVEJOa3d3",
+    mediaType: "photos" as const,
     isMajor: false,
   },
 ];
@@ -163,6 +181,8 @@ const Timeline = () => {
               title={event.title}
               description={event.description}
               link={event.link}
+              mediaType={event.mediaType}
+              mediaUrl={(event as any).mediaUrl}
               isLeft={index % 2 === 0}
               index={index}
               isMajor={event.isMajor}
