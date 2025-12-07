@@ -87,24 +87,47 @@ const TimelineEvent = ({
       );
     }
 
-    if (mediaType === "photos" && link) {
+    if (mediaType === "photos") {
       return (
-        <div className="mt-4 rounded-lg overflow-hidden border border-border/30 bg-background/30 p-4">
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 text-primary hover:text-primary/80 transition-colors"
-          >
-            <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
-              <ImageIcon className="w-6 h-6" />
-            </div>
-            <div className="text-left">
-              <span className="block font-display text-sm">View Photo Album</span>
-              <span className="block text-xs text-muted-foreground">Opens Google Photos</span>
-            </div>
-            <ExternalLink className="w-4 h-4 ml-auto" />
-          </a>
+        <div className="mt-4 rounded-lg overflow-hidden border border-border/30">
+          {thumbnailUrl ? (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block relative group/photo"
+            >
+              <img
+                src={thumbnailUrl}
+                alt={title}
+                className="w-full h-48 object-cover transition-transform duration-300 group-hover/photo:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-background/40 opacity-0 group-hover/photo:opacity-100 transition-opacity flex items-center justify-center">
+                <div className="flex items-center gap-2 text-foreground bg-card/80 px-4 py-2 rounded-full">
+                  <ImageIcon className="w-4 h-4" />
+                  <span className="font-display text-sm">View Album</span>
+                  <ExternalLink className="w-3 h-3" />
+                </div>
+              </div>
+            </a>
+          ) : link ? (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 p-4 bg-background/30 text-primary hover:text-primary/80 transition-colors"
+            >
+              <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
+                <ImageIcon className="w-6 h-6" />
+              </div>
+              <div className="text-left">
+                <span className="block font-display text-sm">View Photo Album</span>
+                <span className="block text-xs text-muted-foreground">Opens Google Photos</span>
+              </div>
+              <ExternalLink className="w-4 h-4 ml-auto" />
+            </a>
+          ) : null}
         </div>
       );
     }
