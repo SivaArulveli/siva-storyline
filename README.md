@@ -1,73 +1,168 @@
-# Welcome to your Lovable project
+# Divine Saga Weaver
 
-## Project info
+A sacred timeline celebrating the Gurupooja tradition of **Sri Siva Swamigal**, featuring an immersive, interactive web experience built with modern web technologies.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## ✨ Features
 
-## How can I edit this code?
+- **Interactive Sacred Timeline**: Journey through 17 years of Gurupooja celebrations (2009-2025)
+- **Keyboard Navigation**: Navigate between events using arrow keys (← →)
+- **Event Details**: Click any card or press Enter to view full event information
+- **3D Card Effects**: Subtle tilt animations on hover for premium feel
+- **Scroll Progress**: Visual indicators showing your position in the timeline
+- **Floating Particles**: Ambient sacred symbols (ॐ, 🪷) creating contemplative atmosphere
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Accessibility**: Full keyboard support and screen reader friendly
 
-There are several ways of editing your application.
+## 🚀 Quick Start
 
-**Use Lovable**
+### Prerequisites
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- Node.js 20 or higher
+- npm or yarn
 
-Changes made via Lovable will be committed automatically to this repo.
+### Installation
 
-**Use your preferred IDE**
+```bash
+# Clone the repository
+git clone https://github.com/SivaArulveli/divine-saga-weaver.git
+cd divine-saga-weaver
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+# Install dependencies
+npm install
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Visit `http://localhost:5173` to view the application.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📦 Build
 
-**Use GitHub Codespaces**
+```bash
+# Production build
+npm run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Preview production build
+npm run preview
+```
 
-## What technologies are used for this project?
+The build output will be in the `dist` directory.
 
-This project is built with:
+## 🔥 Firebase Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Setup
 
-## How can I deploy this project?
+1. **Create Firebase Project**
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Create a new project or select existing one
+   - Enable Firebase Hosting
 
-## Can I connect a custom domain to my Lovable project?
+2. **Update Firebase Configuration**
 
-Yes, you can!
+   - Edit `.firebaserc` and replace `your-firebase-project-id` with your actual project ID
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+3. **Configure GitHub Secrets**
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+   Add the following secrets to your GitHub repository (Settings > Secrets and variables > Actions):
+
+   - `FIREBASE_SERVICE_ACCOUNT`: Your Firebase service account JSON
+
+     - Go to Project Settings > Service Accounts
+     - Click "Generate New Private Key"
+     - Copy the entire JSON content
+
+   - `FIREBASE_PROJECT_ID`: Your Firebase project ID
+
+### Automatic Deployment
+
+Push to the `main` branch to trigger automatic deployment:
+
+```bash
+git add .
+git commit -m "Your commit message"
+git push origin main
+```
+
+GitHub Actions will automatically build and deploy to Firebase Hosting.
+
+### Manual Deployment
+
+```bash
+# Install Firebase CLI
+npm install -g firebase-tools
+
+# Login to Firebase
+firebase login
+
+# Deploy
+firebase deploy --only hosting
+```
+
+## 🛠️ Tech Stack
+
+- **Framework**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS + shadcn/ui
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Deployment**: Firebase Hosting
+- **CI/CD**: GitHub Actions
+
+## 📁 Project Structure
+
+```
+divine-saga-weaver/
+├── src/
+│   ├── components/
+│   │   ├── storyline/        # Timeline components
+│   │   │   ├── TimelineCard.tsx
+│   │   │   ├── EraSection.tsx
+│   │   │   ├── EventDetails.tsx
+│   │   │   └── TimelineRail.tsx
+│   │   ├── FloatingParticles.tsx
+│   │   ├── ScrollProgress.tsx
+│   │   └── BackToTop.tsx
+│   ├── data/
+│   │   └── timeline.ts        # Timeline data
+│   ├── hooks/
+│   │   ├── use-keyboard-navigation.ts
+│   │   └── use-media-query.ts
+│   ├── pages/
+│   │   └── Index.tsx          # Main page
+│   └── assets/                # Images and media
+├── public/
+│   └── images/                # Public images
+├── .github/
+│   └── workflows/
+│       └── deploy.yml         # Firebase deployment workflow
+├── firebase.json              # Firebase configuration
+├── .firebaserc                # Firebase project config
+└── package.json
+```
+
+## ⌨️ Keyboard Shortcuts
+
+- `→` (Right Arrow): Navigate to next event
+- `←` (Left Arrow): Navigate to previous event
+- `Enter`: Open event details for focused card
+- `Escape`: Close event details dialog
+
+## 🎨 Design Principles
+
+- **Sacred Aesthetic**: Gold gradients, sacred symbols, contemplative feel
+- **Performance First**: 60fps animations, optimized rendering
+- **Accessibility**: Keyboard navigation, screen reader support
+- **Progressive Enhancement**: Core functionality works without JavaScript
+
+## 📝 License
+
+This project is created to honor Sri Siva Swamigal's legacy and the Gurupooja tradition.
+
+## 🙏 Acknowledgments
+
+Created with devotion to preserve and share the sacred timeline of Sri Siva Swamigal's Gurupooja celebrations.
+
+---
+
+**Om Namah Sivaya** 🕉️

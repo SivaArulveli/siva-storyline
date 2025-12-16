@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap");
 
 @layer base {
   :root {
@@ -49,10 +49,24 @@
     --temple-stone: 30 15% 12%;
 
     /* Gradients */
-    --gradient-sacred: linear-gradient(180deg, hsl(30 25% 4%) 0%, hsl(25 30% 10%) 50%, hsl(30 25% 4%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(45 90% 50%) 0%, hsl(35 85% 55%) 50%, hsl(28 90% 55%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(35 85% 55% / 0.15) 0%, transparent 70%);
-    
+    --gradient-sacred: linear-gradient(
+      180deg,
+      hsl(30 25% 4%) 0%,
+      hsl(25 30% 10%) 50%,
+      hsl(30 25% 4%) 100%
+    );
+    --gradient-gold: linear-gradient(
+      135deg,
+      hsl(45 90% 50%) 0%,
+      hsl(35 85% 55%) 50%,
+      hsl(28 90% 55%) 100%
+    );
+    --gradient-glow: radial-gradient(
+      ellipse at center,
+      hsl(35 85% 55% / 0.15) 0%,
+      transparent 70%
+    );
+
     /* Shadows */
     --shadow-sacred: 0 0 60px hsl(35 85% 55% / 0.2);
     --shadow-gold: 0 4px 30px hsl(45 90% 50% / 0.3);
@@ -73,11 +87,20 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground font-body antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display;
   }
 }
@@ -103,12 +126,18 @@
   }
 
   .lotus-decoration::before {
-    content: '❈';
+    content: "❈";
     @apply text-primary opacity-30;
   }
 
   .sacred-border {
-    border-image: linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%) 1;
+    border-image: linear-gradient(
+        180deg,
+        hsl(var(--primary)) 0%,
+        hsl(var(--accent)) 50%,
+        hsl(var(--primary)) 100%
+      )
+      1;
   }
 }
 
@@ -135,7 +164,8 @@
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -144,7 +174,8 @@
 }
 
 @keyframes glow-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.4;
     filter: blur(20px);
   }
