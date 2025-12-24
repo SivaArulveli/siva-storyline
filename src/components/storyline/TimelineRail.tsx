@@ -78,7 +78,7 @@ const TimelineRail = () => {
                       : "text-muted-foreground hover:text-foreground hover:bg-primary/10"
                   }`}
                 >
-                  <div className="font-display text-xs mb-1">{era.period}</div>
+                  <div className="font-display text-xs mb-1">{getText(era.period, language)}</div>
                   <div className="text-sm">{getText(era.name, language)}</div>
                 </button>
               ))}

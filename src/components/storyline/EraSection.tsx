@@ -39,7 +39,7 @@ const EraSection = ({ era, index, totalEras, onViewDetails }: EraSectionProps) =
 
         {/* Period */}
         <p className="font-display text-lg md:text-xl text-primary/80 mb-4">
-          {era.period}
+          {getText(era.period, language)}
         </p>
 
         {/* Description */}
