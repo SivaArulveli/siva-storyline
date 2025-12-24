@@ -2,7 +2,8 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink, Play, Image as ImageIcon, Eye } from "lucide-react";
 import { useState, useRef } from "react";
-import { TIMELINE_EVENTS, type TimelineEvent } from "@/data/timeline";
+import { TIMELINE_EVENTS, type TimelineEvent, getText } from "@/data/timeline";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface TimelineCardProps {
   event: TimelineEvent;
@@ -17,6 +18,7 @@ const getYouTubeId = (url: string): string | null => {
 };
 
 const TimelineCard = ({ event, index, onViewDetails }: TimelineCardProps) => {
+  const { language } = useLanguage();
   const [showMedia, setShowMedia] = useState(false);
   const youtubeId = event.mediaType === "youtube" && event.mediaUrl ? getYouTubeId(event.mediaUrl) : null;
 
@@ -61,7 +63,7 @@ const TimelineCard = ({ event, index, onViewDetails }: TimelineCardProps) => {
             <div className="relative w-full aspect-video">
               <iframe
                 src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1`}
-                title={event.title}
+                title={getText(event.title, language)}
                 className="absolute inset-0 w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -77,7 +79,7 @@ const TimelineCard = ({ event, index, onViewDetails }: TimelineCardProps) => {
             >
               <img
                 src={event.thumbnailUrl || `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`}
-                alt={event.title}
+                alt={getText(event.title, language)}
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   e.currentTarget.src = `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
@@ -99,7 +101,7 @@ const TimelineCard = ({ event, index, onViewDetails }: TimelineCardProps) => {
         <div className="mt-4 rounded-lg overflow-hidden border border-border/30">
           <img
             src={event.mediaUrl}
-            alt={event.title}
+            alt={getText(event.title, language)}
             className="w-full h-auto object-cover max-h-64"
             loading="lazy"
           />
@@ -113,7 +115,7 @@ const TimelineCard = ({ event, index, onViewDetails }: TimelineCardProps) => {
           <div className="relative group/photo">
             <img
               src={event.thumbnailUrl}
-              alt={event.title}
+              alt={getText(event.title, language)}
               className="w-full h-48 object-cover transition-transform duration-300 group-hover/photo:scale-105"
               loading="lazy"
             />
@@ -199,14 +201,14 @@ const TimelineCard = ({ event, index, onViewDetails }: TimelineCardProps) => {
 
           {/* Title */}
           <CardTitle className={`text-xl md:text-2xl ${event.isMajor ? "text-gradient-gold" : ""}`}>
-            {event.title}
+            {getText(event.title, language)}
           </CardTitle>
         </CardHeader>
 
         <CardContent className="space-y-4 relative">
           {/* Description */}
           <p className="font-body text-base text-muted-foreground leading-relaxed line-clamp-3">
-            {event.description}
+            {getText(event.description, language)}
           </p>
 
           {/* Media */}

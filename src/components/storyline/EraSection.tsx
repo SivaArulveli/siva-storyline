@@ -2,16 +2,21 @@ import { motion } from "framer-motion";
 import { Separator } from "@/components/ui/separator";
 import TimelineCard from "./TimelineCard";
 import type { Era, TimelineEvent } from "@/data/timeline";
+import { getText } from "@/data/timeline";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface EraSectionProps {
   era: Era;
   index: number;
+  totalEras: number;
   onViewDetails?: (event: TimelineEvent) => void;
 }
 
-const EraSection = ({ era, index, onViewDetails }: EraSectionProps) => {
+const EraSection = ({ era, index, totalEras, onViewDetails }: EraSectionProps) => {
+  const { language } = useLanguage();
+  
   return (
-    <section id={`era-${era.name.toLowerCase().replace(/\s+/g, "-")}`} className="mb-20 md:mb-32">
+    <section id={`era-${getText(era.name, language).toLowerCase().replace(/\s+/g, "-")}`} className="mb-20 md:mb-32">
       {/* Era header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -29,7 +34,7 @@ const EraSection = ({ era, index, onViewDetails }: EraSectionProps) => {
 
         {/* Era name */}
         <h2 className="font-display text-3xl md:text-4xl text-gradient-gold mb-3">
-          {era.name}
+          {getText(era.name, language)}
         </h2>
 
         {/* Period */}
@@ -39,7 +44,7 @@ const EraSection = ({ era, index, onViewDetails }: EraSectionProps) => {
 
         {/* Description */}
         <p className="font-body text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          {era.description}
+          {getText(era.description, language)}
         </p>
       </motion.div>
 
@@ -51,7 +56,7 @@ const EraSection = ({ era, index, onViewDetails }: EraSectionProps) => {
       </div>
 
       {/* Separator after each era except the last */}
-      {index < 3 && (
+      {index < totalEras - 1 && (
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

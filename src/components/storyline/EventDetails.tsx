@@ -10,6 +10,8 @@ import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription } f
 import { ExternalLink, Calendar, MapPin, Play, Image as ImageIcon } from "lucide-react";
 import { useState } from "react";
 import type { TimelineEvent } from "@/data/timeline";
+import { getText } from "@/data/timeline";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
 interface EventDetailsProps {
@@ -19,6 +21,7 @@ interface EventDetailsProps {
 }
 
 const EventDetails = ({ event, open, onOpenChange }: EventDetailsProps) => {
+  const { language } = useLanguage();
   const [showVideo, setShowVideo] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
@@ -49,7 +52,7 @@ const EventDetails = ({ event, open, onOpenChange }: EventDetailsProps) => {
 
       {/* Description */}
       <div className="prose prose-invert max-w-none">
-        <p className="text-base leading-relaxed text-foreground/90">{event.description}</p>
+        <p className="text-base leading-relaxed text-foreground/90">{getText(event.description, language)}</p>
       </div>
 
       {/* Media */}
@@ -59,7 +62,7 @@ const EventDetails = ({ event, open, onOpenChange }: EventDetailsProps) => {
             <div className="relative w-full aspect-video">
               <iframe
                 src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1`}
-                title={event.title}
+                title={getText(event.title, language)}
                 className="absolute inset-0 w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -72,7 +75,7 @@ const EventDetails = ({ event, open, onOpenChange }: EventDetailsProps) => {
             >
               <img
                 src={event.thumbnailUrl || `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`}
-                alt={event.title}
+                alt={getText(event.title, language)}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-background/30 group-hover/play:bg-background/10 transition-colors">
@@ -87,13 +90,13 @@ const EventDetails = ({ event, open, onOpenChange }: EventDetailsProps) => {
 
       {event.mediaType === "image" && event.mediaUrl && (
         <div className="rounded-lg overflow-hidden border border-border/30">
-          <img src={event.mediaUrl} alt={event.title} className="w-full h-auto object-cover" />
+          <img src={event.mediaUrl} alt={getText(event.title, language)} className="w-full h-auto object-cover" />
         </div>
       )}
 
       {event.mediaType === "photos" && event.thumbnailUrl && (
         <div className="rounded-lg overflow-hidden border border-border/30">
-          <img src={event.thumbnailUrl} alt={event.title} className="w-full h-auto object-cover" />
+          <img src={event.thumbnailUrl} alt={getText(event.title, language)} className="w-full h-auto object-cover" />
         </div>
       )}
 
@@ -105,8 +108,14 @@ const EventDetails = ({ event, open, onOpenChange }: EventDetailsProps) => {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
         >
-          <ImageIcon className="w-4 h-4" />
-          <span>View Full Album</span>
+          {event.mediaType === "youtube" ? <Play className="w-4 h-4" /> : <ImageIcon className="w-4 h-4" />}
+          <span>
+            {event.mediaType === "youtube" 
+              ? "Watch on YouTube" 
+              : event.mediaType === "photos" 
+                ? "View Full Album" 
+                : "View Source"}
+          </span>
           <ExternalLink className="w-4 h-4" />
         </a>
       )}
@@ -119,7 +128,7 @@ const EventDetails = ({ event, open, onOpenChange }: EventDetailsProps) => {
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className={`text-2xl ${event.isMajor ? "text-gradient-gold" : ""}`}>
-              {event.title}
+              {getText(event.title, language)}
             </DialogTitle>
             <DialogDescription className="text-base">{event.era}</DialogDescription>
           </DialogHeader>
@@ -134,7 +143,7 @@ const EventDetails = ({ event, open, onOpenChange }: EventDetailsProps) => {
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle className={`text-xl ${event.isMajor ? "text-gradient-gold" : ""}`}>
-            {event.title}
+            {getText(event.title, language)}
           </DrawerTitle>
           <DrawerDescription>{event.era}</DrawerDescription>
         </DrawerHeader>

@@ -85,7 +85,7 @@ const Index = () => {
           {/* Timeline by Era */}
           <div className="space-y-20 md:space-y-32">
             {TIMELINE_BY_ERA.map((era, index) => (
-              <EraSection key={era.name} era={era} index={index} onViewDetails={handleViewDetails} />
+              <EraSection key={era.name.en} era={era} index={index} totalEras={TIMELINE_BY_ERA.length} onViewDetails={handleViewDetails} />
             ))}
           </div>
         </MainLayout>

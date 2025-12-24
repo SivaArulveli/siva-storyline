@@ -1,20 +1,22 @@
 import { motion } from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { TIMELINE_BY_ERA } from "@/data/timeline";
+import { TIMELINE_BY_ERA, getText } from "@/data/timeline";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const TimelineRail = () => {
+  const { language } = useLanguage();
   const [activeEra, setActiveEra] = useState<string>("");
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = TIMELINE_BY_ERA.map((era) => {
-        const id = `era-${era.name.toLowerCase().replace(/\s+/g, "-")}`;
+        const id = `era-${getText(era.name, language).toLowerCase().replace(/\s+/g, "-")}`;
         const element = document.getElementById(id);
         if (element) {
           const rect = element.getBoundingClientRect();
           return {
-            id: era.name,
+            id: getText(era.name, language),
             top: rect.top,
             bottom: rect.bottom,
           };
@@ -36,7 +38,7 @@ const TimelineRail = () => {
     handleScroll(); // Initial check
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [language]);
 
   const scrollToEra = (eraName: string) => {
     const id = `era-${eraName.toLowerCase().replace(/\s+/g, "-")}`;
@@ -68,16 +70,16 @@ const TimelineRail = () => {
             <nav className="space-y-2">
               {TIMELINE_BY_ERA.map((era) => (
                 <button
-                  key={era.name}
-                  onClick={() => scrollToEra(era.name)}
+                  key={getText(era.name, language)}
+                  onClick={() => scrollToEra(getText(era.name, language))}
                   className={`w-full text-left px-3 py-2 rounded-md text-sm font-body transition-all ${
-                    activeEra === era.name
+                    activeEra === getText(era.name, language)
                       ? "bg-primary/20 text-primary border-l-2 border-primary"
                       : "text-muted-foreground hover:text-foreground hover:bg-primary/10"
                   }`}
                 >
                   <div className="font-display text-xs mb-1">{era.period}</div>
-                  <div className="text-sm">{era.name}</div>
+                  <div className="text-sm">{getText(era.name, language)}</div>
                 </button>
               ))}
             </nav>
@@ -96,15 +98,15 @@ const TimelineRail = () => {
           <div className="flex gap-3 px-4">
             {TIMELINE_BY_ERA.map((era) => (
               <button
-                key={era.name}
-                onClick={() => scrollToEra(era.name)}
+                key={getText(era.name, language)}
+                onClick={() => scrollToEra(getText(era.name, language))}
                 className={`flex-shrink-0 px-4 py-2 rounded-full text-xs font-display transition-all whitespace-nowrap ${
-                  activeEra === era.name
+                  activeEra === getText(era.name, language)
                     ? "bg-primary text-primary-foreground"
                     : "bg-card/50 text-muted-foreground hover:text-foreground hover:bg-primary/20"
                 }`}
               >
-                {era.name}
+                {getText(era.name, language)}
               </button>
             ))}
           </div>

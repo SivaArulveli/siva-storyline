@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Home, BookOpen, Info, ExternalLink } from "lucide-react";
+import LanguageToggle from "./LanguageToggle";
 
 const SiteHeader = () => {
   const scrollToSection = (id: string) => {
@@ -51,6 +52,10 @@ const SiteHeader = () => {
               <Info className="w-4 h-4" />
               <span className="hidden sm:inline">About</span>
             </button>
+            
+            <div className="h-4 w-px bg-border/50 mx-1 md:mx-2" />
+            
+            <LanguageToggle />
           </nav>
         </div>
       </div>
